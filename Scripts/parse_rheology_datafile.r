@@ -384,21 +384,11 @@ pred = predict(fit, x)
 plot(x, y, pch = 20)
 lines(x, pred, lwd = 3, col = "blue")
 
-#trying example
-funcmod <- function(A, B, x) (0.001*((A*sin(0.0628*x))+(B*cos(0.0628*x))))
-fo <- as.formula("y ~ 0.001*((A*sin(0.0628*x))+(B*cos(0.0628*x)))")
-nlsfit <- nls(Shear_Stress_Pa_Waveform ~ funcmod(Period_Time_s_Waveform,A,B),
-              data=amb0.1hzsplit$`3`, start = list(A=0.913375856139019, B=0.63235924622541), trace = TRUE, model = T)
-y = amb0.1hzsplit$`0`$Shear_Stress_Pa_Waveform
-x = amb0.1hzsplit$`0`$Period_Time_s_Waveform 
-DF = amb0.1hzsplit$`0`
-fit <- nls(y ~ SSlogis(x, Asym, xmid, scal), data=DF)
-summary(fit)
-idk <- gnls(y ~ 0.001*((A*sin(0.0628*x))+(B*cos(0.0628*x))), data = amb0.1hzsplit$`0`,DF, start = coef(fit))
-# didnt work
-
-# trying example
+# trying example with my data
+# using as20.1hzsplit and 6-9 so 10-100 because graphs looked good
 p = function(x) 0.1*((a*sin(0.0628*x))+(b*cos(0.0628*x)))
+p2 <- function(A, B, x) (0.1*((A*sin(0.0628*x))+(B*cos(0.0628*x))))
+p3 <- as.formula("y ~ 0.1*((A*sin(0.0628*x))+(B*cos(0.0628*x)))")
 x = as20.1hzsplit$`6`$Period_Time_s_Waveform
 y = as20.1hzsplit$`6`$Shear_Stress_Pa_Waveform
 df = data.frame(x = x, y = y)
@@ -409,14 +399,17 @@ print(fit)
 summary(fit)
 str(fit)
 class(fit)
+coef(fit)
+as20.1hzsplit$`6`$Storage_Modulus_Pa #G'= 5.4077 is A
+as20.1hzsplit$`6`$Loss_Modulus_Pa # G"= 2.8183 is B
 
+par(mfrow=c(2,2))
 pred = predict(fit, df)
 plot(x, y, pch = 20)
-lines(x, pred, lwd = 3, col = "blue")
+lines(pred, lwd = 3, col = "blue")
+curve(predict(fit), col='red', lwd=2)
+lines(predict(fit, x, col = "green"))
 
-coef(fit)
-as20.1hzsplit$`6`$Storage_Modulus_Pa #G'=5.4077 is A
-as20.1hzsplit$`6`$Loss_Modulus_Pa # G"=2.8183 is B
 
 
 
