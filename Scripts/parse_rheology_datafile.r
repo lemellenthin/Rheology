@@ -386,15 +386,23 @@ lines(x, pred, lwd = 3, col = "blue")
 
 # trying example with my data
 # using as20.1hzsplit and 6-9 so 10-100 because graphs looked good
+
+# making the function
 p = function(x) 0.1*((a*sin(0.0628*x))+(b*cos(0.0628*x)))
 p2 <- function(A, B, x) (0.1*((A*sin(0.0628*x))+(B*cos(0.0628*x))))
 p3 <- as.formula("y ~ 0.1*((A*sin(0.0628*x))+(B*cos(0.0628*x)))")
+
+# data
 x = as20.1hzsplit$`6`$Period_Time_s_Waveform
 y = as20.1hzsplit$`6`$Shear_Stress_Pa_Waveform
 df = data.frame(x = x, y = y)
+
+# fitting model to data
 fit = nls(y~0.1*((a*sin(0.0628*x))+(b*cos(0.0628*x))), data = df, 
            start=list(a=0.913375856139019, b=0.63235924622541),
            trace=TRUE, model=TRUE)
+
+# analysis
 print(fit)
 summary(fit)
 str(fit)
