@@ -1,7 +1,8 @@
 # Logistics
 library(tidyverse); library(readxl); library(janitor)
 library(expss); library(ggplot2); library(oreo)
-library(xlsx); library(nlme)
+library(xlsx); library(nlme); library(gridExtra)
+library(ggpubr)
 
 # A custom function to read in the information
 # 	parses a single sheet of a single file
@@ -447,36 +448,113 @@ lines(x, pred, lwd = 3, col = "blue")
 # trying example with my data
 # using as20.1hzsplit and 6-9 so 10-100 because graphs looked good
 
-# making the function
+# making the function?
 p = function(x) 0.1*((a*sin(0.62831853*x))+(b*cos(0.62831853*x)))
 p2 <- function(A, B, x) (0.1*((A*sin(0.62831853*x))+(B*cos(0.62831853*x))))
 p3 <- as.formula("y ~ 0.1*((A*sin(0.628*x))+(B*cos(0.628*x)))")
 
-# data
+# data aequaorea sidecut 2 0.1hz so 0.6 at strain that i can check 
+range(as20.1hzsplit$`6`$`Shear_Strain_%_Waveform`) #1.59=0.0159
 x = as20.1hzsplit$`6`$Period_Time_s_Waveform
 y = as20.1hzsplit$`6`$Shear_Stress_Pa_Waveform
 df = data.frame(x = x, y = y)
-
 # fitting model to data
 fit = nls(y~0.0159*((a*sin(0.62831853*x))+(b*cos(0.62831853*x))), data = df, 
           start=list(a=0, b=0),
           trace=TRUE, model=TRUE)
-
 # analysis
 print(fit)
 summary(fit)
-coef(fit)
 # predict a is 5.415763
 # predict b is 2.794847
 # good
 # as20.1hzsplit$`6`$Storage_Modulus_Pa #G'= 5.4077 is A
 # as20.1hzsplit$`6`$Loss_Modulus_Pa # G"= 2.8183 is B
 pred = predict(fit, y)
-
-p = ggplot() +
+p1 = ggplot() +
   geom_line(aes(x = x, y = y), color = "blue") +
-  geom_line(aes(x = x, y = pred), color = "red") +
+  geom_line(aes(x = x, y = fitted(fit)), color = "red") +
   xlab('Time (s)') +
   ylab('Shear Strain') 
-print(p)
+print(p1)
+
+
+# data aequaorea sidecut 2 0.1hz so 0.6 at strain that i can check 
+range(as20.1hzsplit$`7`$`Shear_Strain_%_Waveform`) #3.71=0.0371
+x2 = as20.1hzsplit$`7`$Period_Time_s_Waveform
+y2 = as20.1hzsplit$`7`$Shear_Stress_Pa_Waveform
+df2 = data.frame(x = x2, y = y2)
+# fitting model to data
+fit2 = nls(y~0.0371*((a*sin(0.62831853*x))+(b*cos(0.62831853*x))), data = df2, 
+          start=list(a=0, b=0),
+          trace=TRUE, model=TRUE)
+# analysis
+print(fit2)
+summary(fit2)
+# predict a is 2.6850
+# predict b is 2.0708
+# good
+as20.1hzsplit$`7`$Storage_Modulus_Pa #G'= 2.6786 is A
+as20.1hzsplit$`7`$Loss_Modulus_Pa # G"= 2.1021 is B
+p2 = ggplot() +
+  geom_line(aes(x = x2, y = y2), color = "blue") +
+  geom_line(aes(x = x2, y = fitted(fit2)), color = "red") +
+  xlab('Time (s)') +
+  ylab('Shear Strain') 
+print(p2)
+
+# data aequaorea sidecut 2 0.1hz so 0.6 at strain that i can check 
+range(as20.1hzsplit$`8`$`Shear_Strain_%_Waveform`) #8.63=0.0863
+x3 = as20.1hzsplit$`8`$Period_Time_s_Waveform
+y3 = as20.1hzsplit$`8`$Shear_Stress_Pa_Waveform
+df3 = data.frame(x = x3, y = y3)
+# fitting model to data
+fit3 = nls(y~0.0863*((a*sin(0.62831853*x))+(b*cos(0.62831853*x))), data = df3, 
+          start=list(a=0, b=0),
+          trace=TRUE, model=TRUE)
+# analysis
+print(fit3)
+summary(fit3)
+# predict a is 1.53949
+# predict b is 1.43550
+# good
+as20.1hzsplit$`8`$Storage_Modulus_Pa #G'= 1.5271 is A
+as20.1hzsplit$`8`$Loss_Modulus_Pa # G"= 1.4468 is B
+p3 = ggplot() +
+  geom_line(aes(x = x3, y = y3), color = "blue") +
+  geom_line(aes(x = x3, y = fitted(fit3)), color = "red") +
+  xlab('Time (s)') +
+  ylab('Shear Strain') 
+print(p3)
+
+
+# data aequaorea sidecut 2 0.1hz so 0.6 at strain that i can check 
+range(as20.1hzsplit$`9`$`Shear_Strain_%_Waveform`) #20.1=0.2010
+x4 = as20.1hzsplit$`9`$Period_Time_s_Waveform
+y4 = as20.1hzsplit$`9`$Shear_Stress_Pa_Waveform
+df4 = data.frame(x = x4, y = y4)
+# fitting model to data
+fit4 = nls(y~0.2010*((a*sin(0.62831853*x))+(b*cos(0.62831853*x))), data = df4, 
+          start=list(a=0, b=0),
+          trace=TRUE, model=TRUE)
+# analysis
+print(fit4)
+summary(fit4)
+# predict a is 0.58592
+# predict b is 1.03250
+# good
+as20.1hzsplit$`9`$Storage_Modulus_Pa #G'= 0.58001 is A
+as20.1hzsplit$`9`$Loss_Modulus_Pa # G"= 1.0597 is B
+p4 = ggplot() +
+  geom_line(aes(x = x4, y = y4), color = "blue") +
+  geom_line(aes(x = x4, y = fitted(fit4)), color = "red") +
+  xlab('Time (s)') +
+  ylab('Shear Strain') 
+print(p4)
+
+
+all = ggarrange(p1, p2, p3, p4, 
+          labels = c("1.59%", "3.71%", "8.63%", "20.1%"),
+          ncol = 2, nrow = 2)
+print(all)
 
