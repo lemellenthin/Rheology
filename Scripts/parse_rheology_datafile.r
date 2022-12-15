@@ -367,42 +367,12 @@ plot(as20.1hzsplit$`5`$Period_Time_s_Waveform, as20.1hzsplit$`5`$Shear_Stress_Pa
 #   1 hz = 6.2831853 rad/s
 #   0.1hz = 0.62831853 rad/s
 
-
-#example
+## examples
+#example1
 eDecay <- function(t, ampl, tau) (ampl*exp(-t/tau))
 model1 <- nls(fluorI ~ eDecay(t,myA,myT), data=ExpData, start=list(myA=10,myT=5))
-model1 <- nls(amb0.1hzsplit$`0`$Shear_Stress_Pa_Waveform ~ eDecay(A,B,amb0.1hzsplit$`0`$Period_Time_s_Waveform), 
-    data=amb0.1hzsplit$`0`, start=list(A=0.913375856139019,B=0.63235924622541))
 summary(model1)
-
-#trying example
-funcmod <- function(A, B, x) 
-  (0.001*((A*sin(0.0628*x))+(B*cos(0.0628*x))))
-nlsfit <- nls(Shear_Stress_Pa_Waveform ~ funcmod(Period_Time_s_Waveform,A,B),
-              data=amb0.1hzsplit$`3`,
-              start = list(A=0.913375856139019, B=0.63235924622541),
-              trace = TRUE, 
-              model = T)
-y = amb0.1hzsplit$`0`$Shear_Stress_Pa_Waveform
-x = amb0.1hzsplit$`0`$Period_Time_s_Waveform 
-DF = amb0.1hzsplit$`0`
-fit <- nls(y ~ SSlogis(x, Asym, xmid, scal), data=DF)
-summary(fit)
-idk <- gnls(y ~ 0.001*((A*sin(0.0628*x))+(B*cos(0.0628*x))), data = amb0.1hzsplit$`0`,
-            DF,
-            start = coef(fit))
-summary(nlsfit)
-fo <- as.formula("y ~ 0.001*((A*sin(0.0628*x))+(B*cos(0.0628*x)))")
-
-
-# another try
-y <- list(amb0.1hzsplit$`0`$Shear_Stress_Pa_Waveform)
-x <- amb0.1hzsplit
-fo <- y ~ 0.001 * (( A * sin(0.0628 * amb0.1hzsplit$`0`$Period_Time_s_Waveform ))+( B * cos(0.0628 * amb0.1hzsplit$`0`$Period_Time_s_Waveform)))
-fit2 <- nls(fo, data = y, start = list(A = 0.913375856139019, B = 0.63235924622541))
-plot(df_acf)
-
-# another example
+#example2
 p = function(x) x^3+2*x^2+5
 x = seq(-0.99, 1, by = .01)
 y = peq(x) + runif(200)
@@ -413,7 +383,19 @@ print(fit)
 pred = predict(fit, x)
 plot(x, y, pch = 20)
 lines(x, pred, lwd = 3, col = "blue")
-legend("topleft", legend = c("y~a*x^2+b*x"), fill = c("blue"))
+
+#trying example
+funcmod <- function(A, B, x) (0.001*((A*sin(0.0628*x))+(B*cos(0.0628*x))))
+fo <- as.formula("y ~ 0.001*((A*sin(0.0628*x))+(B*cos(0.0628*x)))")
+nlsfit <- nls(Shear_Stress_Pa_Waveform ~ funcmod(Period_Time_s_Waveform,A,B),
+              data=amb0.1hzsplit$`3`, start = list(A=0.913375856139019, B=0.63235924622541), trace = TRUE, model = T)
+y = amb0.1hzsplit$`0`$Shear_Stress_Pa_Waveform
+x = amb0.1hzsplit$`0`$Period_Time_s_Waveform 
+DF = amb0.1hzsplit$`0`
+fit <- nls(y ~ SSlogis(x, Asym, xmid, scal), data=DF)
+summary(fit)
+idk <- gnls(y ~ 0.001*((A*sin(0.0628*x))+(B*cos(0.0628*x))), data = amb0.1hzsplit$`0`,DF, start = coef(fit))
+# didnt work
 
 # trying example
 p = function(x) 0.1*((a*sin(0.0628*x))+(b*cos(0.0628*x)))
@@ -424,6 +406,7 @@ fit = nls(y~0.1*((a*sin(0.0628*x))+(b*cos(0.0628*x))), data = df,
            start=list(a=0.913375856139019, b=0.63235924622541),
            trace=TRUE, model=TRUE)
 print(fit)
+summary(fit)
 str(fit)
 class(fit)
 
