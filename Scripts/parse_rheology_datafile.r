@@ -350,6 +350,65 @@ plot(as10.1hzsplit$`5`$Period_Time_s_Waveform, as10.1hzsplit$`5`$Shear_Stress_Pa
 plot(as20.1hzsplit$`5`$Period_Time_s_Waveform, as20.1hzsplit$`5`$`Shear_Strain_%_Waveform`)
 plot(as20.1hzsplit$`5`$Period_Time_s_Waveform, as20.1hzsplit$`5`$Shear_Stress_Pa_Waveform)
 #
+##########
+ggplot(data=aequoreaSidecut_amp_1hz, aes(x=Shear_Strain_1, y=Period_Time_s_Waveform, group=1)) +
+  geom_line()+
+  geom_point()
+
+ggplot(data=aequoreaSidecut_amp_5hz, aes(x=Shear_Stress_1, y=Period_Time_s_Waveform, group=1)) +
+  geom_line()+
+  geom_point()
+
+p = ggplot() + 
+  geom_line(data = aequoreaSidecut_amp_5hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "blue") +
+  geom_line(data = aequoreaSidecut_amp_3hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "red") +
+  geom_line(data = aequoreaSidecut_amp_1hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "green") +
+  geom_line(data = aequoreaSidecut_amp_0.5hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "yellow") +
+  geom_line(data = aequoreaSidecut_amp_0.1hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "purple") +
+  xlab('Shear Strain(%)') +
+  ylab('Moduli (Pa)') 
+print(p)
+
+#
+p = ggplot() + 
+  geom_line(data = aequoreamiddlebell_amp_5hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "blue") +
+  geom_line(data = aequoreamiddlebell_amp_3hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "red") +
+  geom_line(data = aequoreamiddlebell_amp_1hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "green") +
+  geom_line(data = aequoreamiddlebell_amp_0.5hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "yellow") +
+  geom_line(data = aequoreamiddlebell_amp_0.1hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "purple") +
+  xlab('Shear Strain(%)') +
+  ylab('Loss Moduli (Pa)') 
+print(p)
+
+#
+par(mfrow=c(5,2))
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`0`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`1`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`2`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`3`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`4`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`5`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`6`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`7`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`8`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`9`)
+
+par(mfrow=c(5,2))
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`0`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`1`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`2`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`3`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`4`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`5`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`6`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`7`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`8`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`9`)
+
+par(mfrow=c(2,1))
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`5`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`5`)
+############
 #######################
 
 # fourier transform
@@ -407,75 +466,17 @@ fit = nls(y~0.0159*((a*sin(0.62831853*x))+(b*cos(0.62831853*x))), data = df,
 print(fit)
 summary(fit)
 coef(fit)
+# predict a is 5.415763
+# predict b is 2.794847
+# good
 # as20.1hzsplit$`6`$Storage_Modulus_Pa #G'= 5.4077 is A
 # as20.1hzsplit$`6`$Loss_Modulus_Pa # G"= 2.8183 is B
+pred = predict(fit, y)
 
-
-par(mfrow=c(2,2))
-pred = predict(fit, x)
-plot(x, y, pch = 20)
-lines(pred, lwd = 3, col = "blue")
-
-
-
-
-
-
-##########
-ggplot(data=aequoreaSidecut_amp_1hz, aes(x=Shear_Strain_1, y=Period_Time_s_Waveform, group=1)) +
-  geom_line()+
-  geom_point()
-
-ggplot(data=aequoreaSidecut_amp_5hz, aes(x=Shear_Stress_1, y=Period_Time_s_Waveform, group=1)) +
-  geom_line()+
-  geom_point()
-
-p = ggplot() + 
-  geom_line(data = aequoreaSidecut_amp_5hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "blue") +
-  geom_line(data = aequoreaSidecut_amp_3hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "red") +
-  geom_line(data = aequoreaSidecut_amp_1hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "green") +
-  geom_line(data = aequoreaSidecut_amp_0.5hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "yellow") +
-  geom_line(data = aequoreaSidecut_amp_0.1hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "purple") +
-  xlab('Shear Strain(%)') +
-  ylab('Moduli (Pa)') 
+p = ggplot() +
+  geom_line(aes(x = x, y = y), color = "blue") +
+  geom_line(aes(x = x, y = pred), color = "red") +
+  xlab('Time (s)') +
+  ylab('Shear Strain') 
 print(p)
 
-##########
-p = ggplot() + 
-  geom_line(data = aequoreamiddlebell_amp_5hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "blue") +
-  geom_line(data = aequoreamiddlebell_amp_3hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "red") +
-  geom_line(data = aequoreamiddlebell_amp_1hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "green") +
-  geom_line(data = aequoreamiddlebell_amp_0.5hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "yellow") +
-  geom_line(data = aequoreamiddlebell_amp_0.1hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "purple") +
-  xlab('Shear Strain(%)') +
-  ylab('Loss Moduli (Pa)') 
-print(p)
-
-########
-par(mfrow=c(5,2))
-plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`0`)
-plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`1`)
-plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`2`)
-plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`3`)
-plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`4`)
-plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`5`)
-plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`6`)
-plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`7`)
-plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`8`)
-plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`9`)
-
-par(mfrow=c(5,2))
-plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`0`)
-plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`1`)
-plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`2`)
-plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`3`)
-plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`4`)
-plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`5`)
-plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`6`)
-plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`7`)
-plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`8`)
-plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`9`)
-
-par(mfrow=c(2,1))
-plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`5`)
-plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`5`)
