@@ -1,7 +1,7 @@
 # Logistics
 library(tidyverse); library(readxl); library(janitor)
 library(expss); library(ggplot2); library(oreo)
-library(xlsx)
+library(xlsx); library(nlme)
 
 # A custom function to read in the information
 # 	parses a single sheet of a single file
@@ -78,7 +78,8 @@ parse_rheology_datafile <- function(file, sheet) {
 	return(dataAll)
 }
 
-
+# Read in Data
+#######################
 # Example of reading in a single sheet from a single file,
 # with the parsing function above.
 # With a list of file names and sheets, you can loop through those things
@@ -171,8 +172,10 @@ plot(aequoreaSidecut1_amp_0.1hz$Period_Time_s_Waveform,
      aequoreaSidecut1_amp_0.1hz$`Shear_Strain_%_Waveform`)
 plot(aequoreaSidecut1_amp_0.1hz$Period_Time_s_Waveform, 
      aequoreaSidecut1_amp_0.1hz$Shear_Stress_Pa_Waveform)
+#######################
 
-
+# split strains
+#######################
 #define number of data frames to split into
 n <- 10
 
@@ -283,7 +286,6 @@ plot(as25hzsplit$`6`$Period_Time_s_Waveform, as25hzsplit$`6`$`Shear_Strain_%_Wav
 plot(as25hzsplit$`6`$Period_Time_s_Waveform, as25hzsplit$`6`$Shear_Stress_Pa_Waveform)
 
 #
-
 par(mfrow=c(5,1))
 plot(aequoreamiddlebell_amp_0.5hz$Average_Time_s,
      aequoreamiddlebell_amp_0.5hz$Shear_Strain_1)
@@ -348,26 +350,121 @@ plot(as10.1hzsplit$`5`$Period_Time_s_Waveform, as10.1hzsplit$`5`$Shear_Stress_Pa
 plot(as20.1hzsplit$`5`$Period_Time_s_Waveform, as20.1hzsplit$`5`$`Shear_Strain_%_Waveform`)
 plot(as20.1hzsplit$`5`$Period_Time_s_Waveform, as20.1hzsplit$`5`$Shear_Stress_Pa_Waveform)
 #
+#######################
 
+# fourier transform
+#######################
+#example
 eDecay <- function(t, ampl, tau) (ampl*exp(-t/tau))
 model1 <- nls(fluorI ~ eDecay(t,myA,myT), data=ExpData, start=list(myA=10,myT=5))
-
-funcmod <- function(A, B, x) 
-  (0.001*((A*sin(0.0628*x))+(B*cos(0.0628*x))))
 model1 <- nls(amb0.1hzsplit$`0`$Shear_Stress_Pa_Waveform ~ eDecay(A,B,amb0.1hzsplit$`0`$Period_Time_s_Waveform), 
     data=amb0.1hzsplit$`0`, start=list(A=0.913375856139019,B=0.63235924622541))
 summary(model1)
-
-
-
-
+#trying example
+funcmod <- function(A, B, x) 
+  (0.001*((A*sin(0.0628*x))+(B*cos(0.0628*x))))
+nlsfit <- nls(Shear_Stress_Pa_Waveform ~ funcmod(Period_Time_s_Waveform,A,B),
+              data=amb0.1hzsplit$`3`,
+              start = list(A=0.913375856139019, B=0.63235924622541),
+              trace = TRUE, 
+              model = T)
+y = amb0.1hzsplit$`0`$Shear_Stress_Pa_Waveform
+x = amb0.1hzsplit$`0`$Period_Time_s_Waveform 
+DF = amb0.1hzsplit$`0`
+fit <- nls(y ~ SSlogis(x, Asym, xmid, scal), data=DF)
+summary(fit)
+idk <- gnls(y ~ 0.001*((A*sin(0.0628*x))+(B*cos(0.0628*x))), data = amb0.1hzsplit$`0`,
+            DF,
+            start = coef(fit))
+summary(nlsfit)
+fo <- as.formula("y ~ 0.001*((A*sin(0.0628*x))+(B*cos(0.0628*x)))")
+fo
+0.913375856139019
+0.63235924622541
+# another try
 y <- list(amb0.1hzsplit$`0`$Shear_Stress_Pa_Waveform)
 x <- amb0.1hzsplit
 fo <- y ~ 0.001 * (( A * sin(0.0628 * amb0.1hzsplit$`0`$Period_Time_s_Waveform ))+( B * cos(0.0628 * amb0.1hzsplit$`0`$Period_Time_s_Waveform)))
-fit2 <- nls(fo, data = y, start = list(A = 0.913375856139019, 
-                                                                         B = 0.63235924622541))
+fit2 <- nls(fo, data = y, start = list(A = 0.913375856139019, B = 0.63235924622541))
 plot(df_acf)
 
+# another example
+p = function(x) x^3+2*x^2+5
+x = seq(-0.99, 1, by = .01)
+y = peq(x) + runif(200)
+df = data.frame(x = x, y = y)
+head(df)
+fit = nls(y~a*x^2+b*x, data = df, start(a=0, b=0))
+print(fit)
+pred = predict(fit, x)
+plot(x, y, pch = 20)
+lines(x, pred, lwd = 3, col = "blue")
+legend("topleft", legend = c("y~a*x^2+b*x"), fill = c("blue"))
+grid()
+fit1 = nls(y~a*x^2+b*x+c, data=df, start=list(a=.5, b=0, c=1))
+# trying example
+p = function(x) 0.001*((a*sin(0.0628*x))+(b*cos(0.0628*x)))
+x = as20.1hzsplit$`6`$Period_Time_s_Waveform
+y = as20.1hzsplit$`6`$Shear_Stress_Pa_Waveform
+df = data.frame(x = x, y = y)
+head(df)
+df$x[1]
+fit = nls(y~0.001*((a*sin(0.0628*x))+(b*cos(0.0628*x))), data = df, start=list(a=0, b=0))
+#fitt = nls(y ~ p(x), data=df, start=list(a=0,b=0))
+#fit2 = nls(y~p(x,a,b), data = df, start(a=0.913375856139019, b=0.63235924622541))
+fit2 = nls(y~0.001*((a*sin(0.0628*x))+(b*cos(0.0628*x))), data = df, start=list(a=0.913375856139019, b=0.63235924622541))
+
+print(fit)
+print(fit2)
+pred = predict(fit, x)
+pred2 = predict(fit2, x)
+plot(x, y, pch = 20)
+lines(x, pred, lwd = 3, col = "blue")
+lines(x, pred2, lwd = 3, col = "red")
+#legend("topleft", legend = c("y~a*x^2+b*x"), fill = c("blue"))
+grid()
+fit1 = nls(y~a*x^2+b*x+c, data=df, start=list(a=.5, b=0, c=1))
+str(fit)
+coef(fit)
+coef(fit2)
+str(pred2)
+as20.1hzsplit$`6`$Loss_Modulus_Pa # G"=2.8183 is B
+as20.1hzsplit$`6`$Storage_Modulus_Pa #G'=5.4077 is A
+
+
+
+
+##########
+ggplot(data=aequoreaSidecut_amp_1hz, aes(x=Shear_Strain_1, y=Period_Time_s_Waveform, group=1)) +
+  geom_line()+
+  geom_point()
+
+ggplot(data=aequoreaSidecut_amp_5hz, aes(x=Shear_Stress_1, y=Period_Time_s_Waveform, group=1)) +
+  geom_line()+
+  geom_point()
+
+p = ggplot() + 
+  geom_line(data = aequoreaSidecut_amp_5hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "blue") +
+  geom_line(data = aequoreaSidecut_amp_3hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "red") +
+  geom_line(data = aequoreaSidecut_amp_1hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "green") +
+  geom_line(data = aequoreaSidecut_amp_0.5hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "yellow") +
+  geom_line(data = aequoreaSidecut_amp_0.1hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "purple") +
+  xlab('Shear Strain(%)') +
+  ylab('Moduli (Pa)') 
+print(p)
+
+##########
+p = ggplot() + 
+  geom_line(data = aequoreamiddlebell_amp_5hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "blue") +
+  geom_line(data = aequoreamiddlebell_amp_3hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "red") +
+  geom_line(data = aequoreamiddlebell_amp_1hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "green") +
+  geom_line(data = aequoreamiddlebell_amp_0.5hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "yellow") +
+  geom_line(data = aequoreamiddlebell_amp_0.1hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "purple") +
+  xlab('Shear Strain(%)') +
+  ylab('Loss Moduli (Pa)') 
+print(p)
+
+########
 par(mfrow=c(5,2))
 plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`0`)
 plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`1`)
@@ -395,65 +492,3 @@ plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`9`)
 par(mfrow=c(2,1))
 plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`5`)
 plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`5`)
-
-nlsfit <- nls(Shear_Stress_Pa_Waveform ~ funcmod(Period_Time_s_Waveform,A,B),
-              data=amb0.1hzsplit$`3`,
-              start = list(A=0.913375856139019, B=0.63235924622541),
-              trace = TRUE, 
-              model = T)
-y = amb0.1hzsplit$`0`$Shear_Stress_Pa_Waveform
-x = amb0.1hzsplit$`0`$Period_Time_s_Waveform 
-DF = amb0.1hzsplit$`0`
-fit <- nls(y ~ SSlogis(x, Asym, xmid, scal), data=DF)
-summary(fit)
-idk <- gnls(y ~ 0.001*((A*sin(0.0628*x))+(B*cos(0.0628*x))), data = amb0.1hzsplit$`0`,
-            DF,
-            start = coef(fit))
-
-summary(nlsfit)
-
-fo <- as.formula("y ~ 0.001*((A*sin(0.0628*x))+(B*cos(0.0628*x)))")
-fo
-
-0.913375856139019
-0.63235924622541
-
-packageurl <- "https://cran.r-project.org/src/contrib/nlme_3.1-160.tar.gz"
-install.packages(packageurl, contriburl=NULL, type="source")
-install.packages('nmle',repos='http://cran.us.r-project.org')
-install.packages("https://cran.r-project.org/src/contrib/nlme_3.1-160.tar.gz", repos = NULL, type="source")
-library(nlme)
-BiocManager::install("nlme")
-
-ggplot(data=aequoreaSidecut_amp_1hz, aes(x=Shear_Strain_1, y=Period_Time_s_Waveform, group=1)) +
-  geom_line()+
-  geom_point()
-
-ggplot(data=aequoreaSidecut_amp_5hz, aes(x=Shear_Stress_1, y=Period_Time_s_Waveform, group=1)) +
-  geom_line()+
-  geom_point()
-
-p = ggplot() + 
-  geom_line(data = aequoreaSidecut_amp_5hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "blue") +
-  geom_line(data = aequoreaSidecut_amp_3hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "red") +
-  geom_line(data = aequoreaSidecut_amp_1hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "green") +
-  geom_line(data = aequoreaSidecut_amp_0.5hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "yellow") +
-  geom_line(data = aequoreaSidecut_amp_0.1hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "purple") +
-  xlab('Shear Strain(%)') +
-  ylab('Moduli (Pa)') 
-
-print(p)
-
-##########
-
-p = ggplot() + 
-  geom_line(data = aequoreamiddlebell_amp_5hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "blue") +
-  geom_line(data = aequoreamiddlebell_amp_3hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "red") +
-  geom_line(data = aequoreamiddlebell_amp_1hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "green") +
-  geom_line(data = aequoreamiddlebell_amp_0.5hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "yellow") +
-  geom_line(data = aequoreamiddlebell_amp_0.1hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa), color = "purple") +
-  xlab('Shear Strain(%)') +
-  ylab('Loss Moduli (Pa)') 
-
-print(p)
-
