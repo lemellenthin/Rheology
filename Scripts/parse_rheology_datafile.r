@@ -409,6 +409,68 @@ plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`9`)
 par(mfrow=c(2,1))
 plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`5`)
 plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`5`)
+
+par(mfrow=c(5,2))
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`6`)
+plot(`Shear_Strain_%_Waveform` ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`6`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`6`)
+plot(`Shear_Strain_%_Waveform` ~ Period_Time_s_Waveform, data=amb0.5hzsplit$`6`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb1hzsplit$`6`)
+plot(`Shear_Strain_%_Waveform` ~ Period_Time_s_Waveform, data=amb1hzsplit$`6`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb3hzsplit$`6`)
+plot(`Shear_Strain_%_Waveform` ~ Period_Time_s_Waveform, data=amb3hzsplit$`6`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb5hzsplit$`6`)
+plot(`Shear_Strain_%_Waveform` ~ Period_Time_s_Waveform, data=amb5hzsplit$`6`)
+par(mfrow=c(5,2))
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=as10.1hzsplit$`6`)
+plot(`Shear_Strain_%_Waveform` ~ Period_Time_s_Waveform, data=as10.1hzsplit$`6`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=as10.5hzsplit$`6`)
+plot(`Shear_Strain_%_Waveform` ~ Period_Time_s_Waveform, data=as10.5hzsplit$`6`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=as11hzsplit$`6`)
+plot(`Shear_Strain_%_Waveform` ~ Period_Time_s_Waveform, data=as11hzsplit$`6`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=as13hzsplit$`6`)
+plot(`Shear_Strain_%_Waveform` ~ Period_Time_s_Waveform, data=as13hzsplit$`6`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=as15hzsplit$`6`)
+plot(`Shear_Strain_%_Waveform` ~ Period_Time_s_Waveform, data=as15hzsplit$`6`)
+par(mfrow=c(5,2))
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=as20.1hzsplit$`6`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=as20.5hzsplit$`6`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=as21hzsplit$`6`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=as23hzsplit$`6`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=as25hzsplit$`6`)
+
+par(mfrow=c(3,2))
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`6`)
+plot(`Shear_Strain_%_Waveform` ~ Period_Time_s_Waveform, data=amb0.1hzsplit$`6`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=as10.5hzsplit$`6`)
+plot(`Shear_Strain_%_Waveform` ~ Period_Time_s_Waveform, data=as10.5hzsplit$`6`)
+plot(Shear_Stress_Pa_Waveform ~ Period_Time_s_Waveform, data=as21hzsplit$`6`)
+plot(`Shear_Strain_%_Waveform` ~ Period_Time_s_Waveform, data=as21hzsplit$`6`)
+
+par(mfrow=c(3,2))
+plot(Shear_Strain_1 ~ Storage_Modulus_Pa+Loss_Modulus_Pa, data=aequoreamiddlebell_amp_0.1hz)
+()
+
+ggplot(aequoreamiddlebell_amp_0.1hz, aes(x=Shear_Strain_1)) +
+  geom_line( aes(y=Loss_Modulus_Pa), color = "blue") + 
+  geom_line( aes(y=Storage_Modulus_Pa), color = "green")
+
+ggplot(aequoreaSidecut2_amp_0.1hz, aes(x=Shear_Strain_1)) +
+  geom_line( aes(y=Loss_Modulus_Pa), color = "blue") + 
+  geom_line( aes(y=Storage_Modulus_Pa), color = "green")
+
+ggplot(aequoreaSidecut1_amp_0.1hz, aes(x=Shear_Strain_1)) +
+  geom_line( aes(y=Loss_Modulus_Pa), color = "blue") + 
+  geom_line( aes(y=Storage_Modulus_Pa), color = "green")
+
+p4 = ggplot() +
+  geom_line(data = aequoreamiddlebell_amp_0.1hz, aes(x = Shear_Strain_1, y = c(Loss_Modulus_Pa, Storage_Modulus_Pa)) +
+  geom_line(data = aequoreamiddlebell_amp_0.1hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa)) +
+  geom_line(data = aequoreamiddlebell_amp_0.1hz, aes(x = Shear_Strain_1, y = Loss_Modulus_Pa)) +
+  xlab('Strain') +
+  ylab('G" and G') 
+print(p4)
+
 ############
 #######################
 
@@ -534,7 +596,7 @@ x4 = as20.1hzsplit$`9`$Period_Time_s_Waveform
 y4 = as20.1hzsplit$`9`$Shear_Stress_Pa_Waveform
 df4 = data.frame(x = x4, y = y4)
 # fitting model to data
-fit4 = nls(y~0.2010*((a*sin(0.62831853*x))+(b*cos(0.62831853*x))), data = df4, 
+fit4 = nls(y~0.201*((a*sin(0.62831853*x))+(b*cos(0.62831853*x))), data = df4, 
           start=list(a=0, b=0),
           trace=TRUE, model=TRUE)
 # analysis
@@ -557,4 +619,8 @@ all = ggarrange(p1, p2, p3, p4,
           labels = c("1.59%", "3.71%", "8.63%", "20.1%"),
           ncol = 2, nrow = 2)
 print(all)
+
+
+
+
 
