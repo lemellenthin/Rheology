@@ -83,37 +83,37 @@ parse_rheology_datafile <- function(file, sheet) {
 # Example of reading in a single sheet from a single file,
 # with the parsing function above.
 # With a list of file names and sheets, you can loop through those things
-aequoreaSidecut1_amp_5hz <- parse_rheology_datafile(file="./Data(Jan2021)/Cnido/aequorea/10-03-2020 Aequorea sidecut1 amp sweeps.xlsx",
+aequoreaSidecut1_amp_5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/aequorea/10-03-2020 Aequorea sidecut1 amp sweeps.xlsx",
  												   sheet="Sheet1")
-aequoreaSidecut1_amp_3hz <- parse_rheology_datafile(file="./Data(Jan2021)/Cnido/aequorea/10-03-2020 Aequorea sidecut1 amp sweeps.xlsx",
+aequoreaSidecut1_amp_3hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/aequorea/10-03-2020 Aequorea sidecut1 amp sweeps.xlsx",
                                                    sheet="Sheet2")
-aequoreaSidecut1_amp_1hz <- parse_rheology_datafile(file="./Data(Jan2021)/Cnido/aequorea/10-03-2020 Aequorea sidecut1 amp sweeps.xlsx",
+aequoreaSidecut1_amp_1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/aequorea/10-03-2020 Aequorea sidecut1 amp sweeps.xlsx",
                                                    sheet="Sheet3")
-aequoreaSidecut1_amp_0.5hz <- parse_rheology_datafile(file="./Data(Jan2021)/Cnido/aequorea/10-03-2020 Aequorea sidecut1 amp sweeps.xlsx",
+aequoreaSidecut1_amp_0.5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/aequorea/10-03-2020 Aequorea sidecut1 amp sweeps.xlsx",
                                                    sheet="Sheet4")
-aequoreaSidecut1_amp_0.1hz <- parse_rheology_datafile(file="./Data(Jan2021)/Cnido/aequorea/10-03-2020 Aequorea sidecut1 amp sweeps.xlsx",
+aequoreaSidecut1_amp_0.1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/aequorea/10-03-2020 Aequorea sidecut1 amp sweeps.xlsx",
                                                    sheet="Sheet5")
 #
-aequoreaSidecut2_amp_5hz <- parse_rheology_datafile(file="./Data(Jan2021)/Cnido/aequorea/11-03-2020 Aequorea sidecut2 amp sweeps.xlsx",
+aequoreaSidecut2_amp_5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/aequorea/11-03-2020 Aequorea sidecut2 amp sweeps.xlsx",
                                                    sheet="Sheet1")
-aequoreaSidecut2_amp_3hz <- parse_rheology_datafile(file="./Data(Jan2021)/Cnido/aequorea/11-03-2020 Aequorea sidecut2 amp sweeps.xlsx",
+aequoreaSidecut2_amp_3hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/aequorea/11-03-2020 Aequorea sidecut2 amp sweeps.xlsx",
                                                    sheet="Sheet2")
-aequoreaSidecut2_amp_1hz <- parse_rheology_datafile(file="./Data(Jan2021)/Cnido/aequorea/11-03-2020 Aequorea sidecut2 amp sweeps.xlsx",
+aequoreaSidecut2_amp_1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/aequorea/11-03-2020 Aequorea sidecut2 amp sweeps.xlsx",
                                                    sheet="Sheet3")
-aequoreaSidecut2_amp_0.5hz <- parse_rheology_datafile(file="./Data(Jan2021)/Cnido/aequorea/11-03-2020 Aequorea sidecut2 amp sweeps.xlsx",
+aequoreaSidecut2_amp_0.5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/aequorea/11-03-2020 Aequorea sidecut2 amp sweeps.xlsx",
                                                      sheet="Sheet4")
-aequoreaSidecut2_amp_0.1hz <- parse_rheology_datafile(file="./Data(Jan2021)/Cnido/aequorea/11-03-2020 Aequorea sidecut2 amp sweeps.xlsx",
+aequoreaSidecut2_amp_0.1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/aequorea/11-03-2020 Aequorea sidecut2 amp sweeps.xlsx",
                                                      sheet="Sheet5")
 #
-aequoreamiddlebell_amp_5hz <- parse_rheology_datafile(file="./Data(Jan2021)/Cnido/aequorea/11-03-2020 Aequorea middlebell amp sweeps.xlsx",
+aequoreamiddlebell_amp_5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/aequorea/11-03-2020 Aequorea middlebell amp sweeps.xlsx",
                                                       sheet="Sheet1")
-aequoreamiddlebell_amp_3hz <- parse_rheology_datafile(file="./Data(Jan2021)/Cnido/aequorea/11-03-2020 Aequorea middlebell amp sweeps.xlsx",
+aequoreamiddlebell_amp_3hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/aequorea/11-03-2020 Aequorea middlebell amp sweeps.xlsx",
                                                       sheet="Sheet2")
-aequoreamiddlebell_amp_1hz <- parse_rheology_datafile(file="./Data(Jan2021)/Cnido/aequorea/11-03-2020 Aequorea middlebell amp sweeps.xlsx",
+aequoreamiddlebell_amp_1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/aequorea/11-03-2020 Aequorea middlebell amp sweeps.xlsx",
                                                       sheet="Sheet3")
-aequoreamiddlebell_amp_0.5hz <- parse_rheology_datafile(file="./Data(Jan2021)/Cnido/aequorea/11-03-2020 Aequorea middlebell amp sweeps.xlsx",
+aequoreamiddlebell_amp_0.5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/aequorea/11-03-2020 Aequorea middlebell amp sweeps.xlsx",
                                                         sheet="Sheet4")
-aequoreamiddlebell_amp_0.1hz <- parse_rheology_datafile(file="./Data(Jan2021)/Cnido/aequorea/11-03-2020 Aequorea middlebell amp sweeps.xlsx",
+aequoreamiddlebell_amp_0.1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/aequorea/11-03-2020 Aequorea middlebell amp sweeps.xlsx",
                                                         sheet="Sheet5")
 #
 str(aequoreaSidecut_amp_5hz)
@@ -354,12 +354,27 @@ plot(as20.1hzsplit$`5`$Period_Time_s_Waveform, as20.1hzsplit$`5`$Shear_Stress_Pa
 
 # fourier transform
 #######################
+# formula
+#   '0.001*[(A*sin(0.0628*x))+(B*cos(0.0628*x))]'
+#   A = G' storage modulus, elastic moduli
+#   B = G" loss modulus, viscous moduli
+#   x = Time as independent variable
+#   y = stress as dependent variable
+#   start points A,B [0.913375856139019 0.63235924622541]
+#   0.1% strain = 0.001, 0.2%=0.002, 0.5=0.005, 1=0.01, 2=0.02, 5=0.05, 10=0.1, 20=0.2, 50=0.5, 100=1
+#   0                     1           2           3       4       5       6       7       8       9
+#   1-10 strains (0.1,0.2,0.5,1,2,5,10,20,50,100) split(0-9)
+#   1 hz = 6.2831853 rad/s
+#   0.1hz = 0.62831853 rad/s
+
+
 #example
 eDecay <- function(t, ampl, tau) (ampl*exp(-t/tau))
 model1 <- nls(fluorI ~ eDecay(t,myA,myT), data=ExpData, start=list(myA=10,myT=5))
 model1 <- nls(amb0.1hzsplit$`0`$Shear_Stress_Pa_Waveform ~ eDecay(A,B,amb0.1hzsplit$`0`$Period_Time_s_Waveform), 
     data=amb0.1hzsplit$`0`, start=list(A=0.913375856139019,B=0.63235924622541))
 summary(model1)
+
 #trying example
 funcmod <- function(A, B, x) 
   (0.001*((A*sin(0.0628*x))+(B*cos(0.0628*x))))
@@ -378,9 +393,8 @@ idk <- gnls(y ~ 0.001*((A*sin(0.0628*x))+(B*cos(0.0628*x))), data = amb0.1hzspli
             start = coef(fit))
 summary(nlsfit)
 fo <- as.formula("y ~ 0.001*((A*sin(0.0628*x))+(B*cos(0.0628*x)))")
-fo
-0.913375856139019
-0.63235924622541
+
+
 # another try
 y <- list(amb0.1hzsplit$`0`$Shear_Stress_Pa_Waveform)
 x <- amb0.1hzsplit
@@ -402,17 +416,19 @@ lines(x, pred, lwd = 3, col = "blue")
 legend("topleft", legend = c("y~a*x^2+b*x"), fill = c("blue"))
 grid()
 fit1 = nls(y~a*x^2+b*x+c, data=df, start=list(a=.5, b=0, c=1))
+
 # trying example
-p = function(x) 0.001*((a*sin(0.0628*x))+(b*cos(0.0628*x)))
+p = function(x) 0.01*((a*sin(0.0628*x))+(b*cos(0.0628*x)))
 x = as20.1hzsplit$`6`$Period_Time_s_Waveform
 y = as20.1hzsplit$`6`$Shear_Stress_Pa_Waveform
 df = data.frame(x = x, y = y)
 head(df)
 df$x[1]
-fit = nls(y~0.001*((a*sin(0.0628*x))+(b*cos(0.0628*x))), data = df, start=list(a=0, b=0))
+fit = nls(y~0.01*((a*sin(0.0628*x))+(b*cos(0.0628*x))), data = df, start=list(a=0, b=0))
 #fitt = nls(y ~ p(x), data=df, start=list(a=0,b=0))
 #fit2 = nls(y~p(x,a,b), data = df, start(a=0.913375856139019, b=0.63235924622541))
-fit2 = nls(y~0.001*((a*sin(0.0628*x))+(b*cos(0.0628*x))), data = df, start=list(a=0.913375856139019, b=0.63235924622541))
+fit2 = nls(y~0.01*((a*sin(0.0628*x))+(b*cos(0.0628*x))), data = df, 
+           start=list(a=0.913375856139019, b=0.63235924622541))
 
 print(fit)
 print(fit2)
@@ -423,13 +439,12 @@ lines(x, pred, lwd = 3, col = "blue")
 lines(x, pred2, lwd = 3, col = "red")
 #legend("topleft", legend = c("y~a*x^2+b*x"), fill = c("blue"))
 grid()
-fit1 = nls(y~a*x^2+b*x+c, data=df, start=list(a=.5, b=0, c=1))
 str(fit)
 coef(fit)
 coef(fit2)
-str(pred2)
-as20.1hzsplit$`6`$Loss_Modulus_Pa # G"=2.8183 is B
 as20.1hzsplit$`6`$Storage_Modulus_Pa #G'=5.4077 is A
+as20.1hzsplit$`6`$Loss_Modulus_Pa # G"=2.8183 is B
+
 
 
 
