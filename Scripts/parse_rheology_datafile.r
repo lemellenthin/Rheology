@@ -414,34 +414,24 @@ pred = predict(fit, x)
 plot(x, y, pch = 20)
 lines(x, pred, lwd = 3, col = "blue")
 legend("topleft", legend = c("y~a*x^2+b*x"), fill = c("blue"))
-grid()
-fit1 = nls(y~a*x^2+b*x+c, data=df, start=list(a=.5, b=0, c=1))
 
 # trying example
-p = function(x) 0.01*((a*sin(0.0628*x))+(b*cos(0.0628*x)))
+p = function(x) 0.1*((a*sin(0.0628*x))+(b*cos(0.0628*x)))
 x = as20.1hzsplit$`6`$Period_Time_s_Waveform
 y = as20.1hzsplit$`6`$Shear_Stress_Pa_Waveform
 df = data.frame(x = x, y = y)
-head(df)
-df$x[1]
-fit = nls(y~0.01*((a*sin(0.0628*x))+(b*cos(0.0628*x))), data = df, start=list(a=0, b=0))
-#fitt = nls(y ~ p(x), data=df, start=list(a=0,b=0))
-#fit2 = nls(y~p(x,a,b), data = df, start(a=0.913375856139019, b=0.63235924622541))
-fit2 = nls(y~0.01*((a*sin(0.0628*x))+(b*cos(0.0628*x))), data = df, 
-           start=list(a=0.913375856139019, b=0.63235924622541))
-
+fit = nls(y~0.1*((a*sin(0.0628*x))+(b*cos(0.0628*x))), data = df, 
+           start=list(a=0.913375856139019, b=0.63235924622541),
+           trace=TRUE, model=TRUE)
 print(fit)
-print(fit2)
-pred = predict(fit, x)
-pred2 = predict(fit2, x)
+str(fit)
+class(fit)
+
+pred = predict(fit, df)
 plot(x, y, pch = 20)
 lines(x, pred, lwd = 3, col = "blue")
-lines(x, pred2, lwd = 3, col = "red")
-#legend("topleft", legend = c("y~a*x^2+b*x"), fill = c("blue"))
-grid()
-str(fit)
+
 coef(fit)
-coef(fit2)
 as20.1hzsplit$`6`$Storage_Modulus_Pa #G'=5.4077 is A
 as20.1hzsplit$`6`$Loss_Modulus_Pa # G"=2.8183 is B
 
