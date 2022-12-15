@@ -364,8 +364,9 @@ plot(as20.1hzsplit$`5`$Period_Time_s_Waveform, as20.1hzsplit$`5`$Shear_Stress_Pa
 #   0.1% strain = 0.001, 0.2%=0.002, 0.5=0.005, 1=0.01, 2=0.02, 5=0.05, 10=0.1, 20=0.2, 50=0.5, 100=1
 #   0                     1           2           3       4       5       6       7       8       9
 #   1-10 strains (0.1,0.2,0.5,1,2,5,10,20,50,100) split(0-9)
-#   1 hz = 6.2831853 rad/s
+#   1 hz = 6.2831853 rad/s so it would be 2*pi*frequency hz = frequency rad/s
 #   0.1hz = 0.62831853 rad/s
+#   0.01 = 0.0628
 
 ## examples
 #example1
@@ -388,9 +389,9 @@ lines(x, pred, lwd = 3, col = "blue")
 # using as20.1hzsplit and 6-9 so 10-100 because graphs looked good
 
 # making the function
-p = function(x) 0.1*((a*sin(0.0628*x))+(b*cos(0.0628*x)))
-p2 <- function(A, B, x) (0.1*((A*sin(0.0628*x))+(B*cos(0.0628*x))))
-p3 <- as.formula("y ~ 0.1*((A*sin(0.0628*x))+(B*cos(0.0628*x)))")
+p = function(x) 0.1*((a*sin(0.62831853*x))+(b*cos(0.62831853*x)))
+p2 <- function(A, B, x) (0.1*((A*sin(0.62831853*x))+(B*cos(0.62831853*x))))
+p3 <- as.formula("y ~ 0.1*((A*sin(0.628*x))+(B*cos(0.628*x)))")
 
 # data
 x = as20.1hzsplit$`6`$Period_Time_s_Waveform
@@ -398,25 +399,22 @@ y = as20.1hzsplit$`6`$Shear_Stress_Pa_Waveform
 df = data.frame(x = x, y = y)
 
 # fitting model to data
-fit = nls(y~0.1*((a*sin(0.0628*x))+(b*cos(0.0628*x))), data = df, 
-           start=list(a=0.913375856139019, b=0.63235924622541),
-           trace=TRUE, model=TRUE)
+fit = nls(y~0.0159*((a*sin(0.62831853*x))+(b*cos(0.62831853*x))), data = df, 
+          start=list(a=0, b=0),
+          trace=TRUE, model=TRUE)
 
 # analysis
 print(fit)
 summary(fit)
-str(fit)
-class(fit)
 coef(fit)
-as20.1hzsplit$`6`$Storage_Modulus_Pa #G'= 5.4077 is A
-as20.1hzsplit$`6`$Loss_Modulus_Pa # G"= 2.8183 is B
+# as20.1hzsplit$`6`$Storage_Modulus_Pa #G'= 5.4077 is A
+# as20.1hzsplit$`6`$Loss_Modulus_Pa # G"= 2.8183 is B
+
 
 par(mfrow=c(2,2))
-pred = predict(fit, df)
+pred = predict(fit, x)
 plot(x, y, pch = 20)
 lines(pred, lwd = 3, col = "blue")
-curve(predict(fit), col='red', lwd=2)
-lines(predict(fit, x, col = "green"))
 
 
 
