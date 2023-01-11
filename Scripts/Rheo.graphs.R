@@ -117,6 +117,33 @@ q <- ggplot(all, aes(x=freq)) +
 q
 
 
+cy1midbellsandtop1_amp_5hz, 
+cy1midbellsandbot1_amp_5hz, 
+cy2midbellsandtop1_amp_5hz, 
+cy2midbellsandbot1_amp_5hz
+
+cy1outerbell_amp_5hz
+cy2outerbell_amp_5hz
+
+cy1middle_amp_5hz
+cy2middle_amp_5hz
+
+cy1sidecut1_amp_5hz
+cy1sidecut2_amp_5hz
+
+cy2sidecut1_amp_5hz
+cy2sidecut2_amp_5hz
+
+
+
+
+
+
+
+
+
+
+
 
 
 

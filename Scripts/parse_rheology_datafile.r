@@ -79,11 +79,156 @@ parse_rheology_datafile <- function(file, sheet) {
 	return(dataAll)
 }
 
+getwd()
+
 # Read in Data
 #######################
 # Example of reading in a single sheet from a single file,
 # with the parsing function above.
 # With a list of file names and sheets, you can loop through those things
+
+### cyanea
+cy1midbellsandtop1_amp_5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-22-2020 cyanea1 mid-bell sandwich top amp sweeps.xlsx",
+                                                    sheet="Sheet1")
+cy1midbellsandtop1_amp_3hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-22-2020 cyanea1 mid-bell sandwich top amp sweeps.xlsx",
+                                                    sheet="Sheet2")
+cy1midbellsandtop1_amp_1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-22-2020 cyanea1 mid-bell sandwich top amp sweeps.xlsx",
+                                                    sheet="Sheet3")
+cy1midbellsandtop1_amp_0.5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-22-2020 cyanea1 mid-bell sandwich top amp sweeps.xlsx",
+                                                      sheet="Sheet4")
+cy1midbellsandtop1_amp_0.1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-22-2020 cyanea1 mid-bell sandwich top amp sweeps.xlsx",
+                                                      sheet="Sheet5")
+#
+cy1midbellsandbot1_amp_5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-22-2020 cyanea1 mid-bell sandwich bottom amp sweeps.xlsx",
+                                                      sheet="Sheet1")
+cy1midbellsandbot1_amp_3hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-22-2020 cyanea1 mid-bell sandwich bottom amp sweeps.xlsx",
+                                                      sheet="Sheet2")
+cy1midbellsandbot1_amp_1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-22-2020 cyanea1 mid-bell sandwich bottom amp sweeps.xlsx",
+                                                      sheet="Sheet3")
+cy1midbellsandbot1_amp_0.5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-22-2020 cyanea1 mid-bell sandwich bottom amp sweeps.xlsx",
+                                                        sheet="Sheet4")
+cy1midbellsandbot1_amp_0.1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-22-2020 cyanea1 mid-bell sandwich bottom amp sweeps.xlsx",
+                                                        sheet="Sheet5")
+#
+cy2midbellsandtop1_amp_5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-20-2020 cyanea2 mid-bellsandwichtop amp sweeps.xlsx",
+                                                      sheet="Sheet1")
+cy2midbellsandtop1_amp_3hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-20-2020 cyanea2 mid-bellsandwichtop amp sweeps.xlsx",
+                                                      sheet="Sheet2")
+cy2midbellsandtop1_amp_1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-20-2020 cyanea2 mid-bellsandwichtop amp sweeps.xlsx",
+                                                      sheet="Sheet3")
+cy2midbellsandtop1_amp_0.5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-20-2020 cyanea2 mid-bellsandwichtop amp sweeps.xlsx",
+                                                        sheet="Sheet4")
+cy2midbellsandtop1_amp_0.1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-20-2020 cyanea2 mid-bellsandwichtop amp sweeps.xlsx",
+                                                        sheet="Sheet5")
+#
+cy2midbellsandbot1_amp_5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-16-2020 cyanea2 mid-bellsandwichbottom amp sweeps.xlsx",
+                                                      sheet="Sheet1")
+cy2midbellsandbot1_amp_3hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-16-2020 cyanea2 mid-bellsandwichbottom amp sweeps.xlsx",
+                                                      sheet="Sheet2")
+cy2midbellsandbot1_amp_1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-16-2020 cyanea2 mid-bellsandwichbottom amp sweeps.xlsx",
+                                                      sheet="Sheet3")
+cy2midbellsandbot1_amp_0.5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-16-2020 cyanea2 mid-bellsandwichbottom amp sweeps.xlsx",
+                                                        sheet="Sheet4")
+cy2midbellsandbot1_amp_0.1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-16-2020 cyanea2 mid-bellsandwichbottom amp sweeps.xlsx",
+                                                        sheet="Sheet5")
+#
+cy1outerbell_amp_5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-15-2020 cyanea outerbell amp sweeps.xlsx",
+                                                      sheet="Sheet1")
+cy1outerbell_amp_3hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-15-2020 cyanea outerbell amp sweeps.xlsx",
+                                                      sheet="Sheet2")
+cy1outerbell_amp_1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-15-2020 cyanea outerbell amp sweeps.xlsx",
+                                                      sheet="Sheet3")
+cy1outerbell_amp_0.5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-15-2020 cyanea outerbell amp sweeps.xlsx",
+                                                        sheet="Sheet4")
+cy1outerbell_amp_0.1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-15-2020 cyanea outerbell amp sweeps.xlsx",
+                                                        sheet="Sheet5")
+#
+cy2outerbell_amp_5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-21-2020 cyanea1 outerbell amp sweeps.xlsx",
+                                                sheet="Sheet1")
+cy2outerbell_amp_3hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-21-2020 cyanea1 outerbell amp sweeps.xlsx",
+                                                sheet="Sheet2")
+cy2outerbell_amp_1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-21-2020 cyanea1 outerbell amp sweeps.xlsx",
+                                                sheet="Sheet3")
+cy2outerbell_amp_0.5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-21-2020 cyanea1 outerbell amp sweeps.xlsx",
+                                                  sheet="Sheet4")
+cy2outerbell_amp_0.1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-21-2020 cyanea1 outerbell amp sweeps.xlsx",
+                                                  sheet="Sheet5")
+#
+
+#
+cy1middle_amp_5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-14-2020 cyanea middlebell amp sweeps.xlsx",
+                                                sheet="Sheet1")
+cy1middle_amp_3hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-14-2020 cyanea middlebell amp sweeps.xlsx",
+                                                sheet="Sheet2")
+cy1middle_amp_1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-14-2020 cyanea middlebell amp sweeps.xlsx",
+                                                sheet="Sheet3")
+cy1middle_amp_0.5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-14-2020 cyanea middlebell amp sweeps.xlsx",
+                                                  sheet="Sheet4")
+cy1middle_amp_0.1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-14-2020 cyanea middlebell amp sweeps.xlsx",
+                                                  sheet="Sheet5")
+#
+#
+cy2middle_amp_5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-20-2020_cyanea1_middlebell_ampsweeps.xlsx",
+                                                sheet="Sheet1")
+cy2middle_amp_3hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-20-2020_cyanea1_middlebell_ampsweeps.xlsx",
+                                                sheet="Sheet2")
+cy2middle_amp_1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-20-2020_cyanea1_middlebell_ampsweeps.xlsx",
+                                                sheet="Sheet3")
+cy2middle_amp_0.5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-20-2020_cyanea1_middlebell_ampsweeps.xlsx",
+                                                  sheet="Sheet4")
+cy2middle_amp_0.1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-20-2020_cyanea1_middlebell_ampsweeps.xlsx",
+                                                  sheet="Sheet5")
+#
+cy1sidecut1_amp_5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-21-2020 cyanea1 sidecut1 amp sweeps.xlsx",
+                                             sheet="Sheet1")
+cy1sidecut1_amp_3hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-21-2020 cyanea1 sidecut1 amp sweeps.xlsx",
+                                             sheet="Sheet2")
+cy1sidecut1_amp_1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-21-2020 cyanea1 sidecut1 amp sweeps.xlsx",
+                                             sheet="Sheet3")
+cy1sidecut1_amp_0.5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-21-2020 cyanea1 sidecut1 amp sweeps.xlsx",
+                                               sheet="Sheet4")
+cy1sidecut1_amp_0.1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-21-2020 cyanea1 sidecut1 amp sweeps.xlsx",
+                                               sheet="Sheet5")
+#
+cy1sidecut2_amp_5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-21-2020 cyanea1 sidecut2 amp sweeps.xlsx",
+                                               sheet="Sheet1")
+cy1sidecut2_amp_3hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-21-2020 cyanea1 sidecut2 amp sweeps.xlsx",
+                                               sheet="Sheet2")
+cy1sidecut2_amp_1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-21-2020 cyanea1 sidecut2 amp sweeps.xlsx",
+                                               sheet="Sheet3")
+cy1sidecut2_amp_0.5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-21-2020 cyanea1 sidecut2 amp sweeps.xlsx",
+                                                 sheet="Sheet4")
+cy1sidecut2_amp_0.1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-21-2020 cyanea1 sidecut2 amp sweeps.xlsx",
+                                                 sheet="Sheet5")
+#
+cy2sidecut1_amp_5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-15-2020 cyanea sidecut1 amp sweeps.xlsx",
+                                               sheet="Sheet1")
+cy2sidecut1_amp_3hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-15-2020 cyanea sidecut1 amp sweeps.xlsx",
+                                               sheet="Sheet2")
+cy2sidecut1_amp_1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-15-2020 cyanea sidecut1 amp sweeps.xlsx",
+                                               sheet="Sheet3")
+cy2sidecut1_amp_0.5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-15-2020 cyanea sidecut1 amp sweeps.xlsx",
+                                                 sheet="Sheet4")
+cy2sidecut1_amp_0.1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-15-2020 cyanea sidecut1 amp sweeps.xlsx",
+                                                 sheet="Sheet5")
+#
+cy2sidecut2_amp_5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-16-2020 cyanea2 sidecut2 amp sweeps.xlsx",
+                                               sheet="Sheet1")
+cy2sidecut2_amp_3hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-16-2020 cyanea2 sidecut2 amp sweeps.xlsx",
+                                               sheet="Sheet2")
+cy2sidecut2_amp_1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-16-2020 cyanea2 sidecut2 amp sweeps.xlsx",
+                                               sheet="Sheet3")
+cy2sidecut2_amp_0.5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-16-2020 cyanea2 sidecut2 amp sweeps.xlsx",
+                                                 sheet="Sheet4")
+cy2sidecut2_amp_0.1hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/cyanea/10-16-2020 cyanea2 sidecut2 amp sweeps.xlsx",
+                                                 sheet="Sheet5")
+
+
+
+
+
+
+### aequorea
 aequoreaSidecut1_amp_5hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/aequorea/10-03-2020 Aequorea sidecut1 amp sweeps.xlsx",
  												   sheet="Sheet1")
 aequoreaSidecut1_amp_3hz <- parse_rheology_datafile(file="./Data_Jan2021/Cnido/aequorea/10-03-2020 Aequorea sidecut1 amp sweeps.xlsx",
@@ -173,6 +318,192 @@ plot(aequoreaSidecut1_amp_0.1hz$Period_Time_s_Waveform,
      aequoreaSidecut1_amp_0.1hz$`Shear_Strain_%_Waveform`)
 plot(aequoreaSidecut1_amp_0.1hz$Period_Time_s_Waveform, 
      aequoreaSidecut1_amp_0.1hz$Shear_Stress_Pa_Waveform)
+#
+par(mfrow=c(5,2))
+plot(cy1midbellsandtop1_amp_5hz$Period_Time_s_Waveform, 
+     cy1midbellsandtop1_amp_5hz$`Shear_Strain_%_Waveform`)
+plot(cy1midbellsandtop1_amp_5hz$Period_Time_s_Waveform, 
+     cy1midbellsandtop1_amp_5hz$Shear_Stress_Pa_Waveform)
+
+plot(cy1midbellsandtop1_amp_3hz$Period_Time_s_Waveform, 
+     cy1midbellsandtop1_amp_3hz$`Shear_Strain_%_Waveform`)
+plot(cy1midbellsandtop1_amp_3hz$Period_Time_s_Waveform, 
+     cy1midbellsandtop1_amp_3hz$Shear_Stress_Pa_Waveform)
+
+plot(cy1midbellsandtop1_amp_1hz$Period_Time_s_Waveform, 
+     cy1midbellsandtop1_amp_1hz$`Shear_Strain_%_Waveform`)
+plot(cy1midbellsandtop1_amp_1hz$Period_Time_s_Waveform, 
+     cy1midbellsandtop1_amp_1hz$Shear_Stress_Pa_Waveform)
+
+plot(cy1midbellsandtop1_amp_0.5hz$Period_Time_s_Waveform, 
+     cy1midbellsandtop1_amp_0.5hz$`Shear_Strain_%_Waveform`)
+plot(cy1midbellsandtop1_amp_0.5hz$Period_Time_s_Waveform, 
+     cy1midbellsandtop1_amp_0.5hz$Shear_Stress_Pa_Waveform)
+
+plot(cy1midbellsandtop1_amp_0.1hz$Period_Time_s_Waveform, 
+     cy1midbellsandtop1_amp_0.1hz$`Shear_Strain_%_Waveform`)
+plot(cy1midbellsandtop1_amp_0.1hz$Period_Time_s_Waveform, 
+     cy1midbellsandtop1_amp_0.1hz$Shear_Stress_Pa_Waveform)
+#
+par(mfrow=c(5,2))
+plot(cy1midbellsandbot1_amp_5hz$Period_Time_s_Waveform, 
+     cy1midbellsandbot1_amp_5hz$`Shear_Strain_%_Waveform`)
+plot(cy1midbellsandbot1_amp_5hz$Period_Time_s_Waveform, 
+     cy1midbellsandbot1_amp_5hz$Shear_Stress_Pa_Waveform)
+
+plot(cy1midbellsandbot1_amp_3hz$Period_Time_s_Waveform, 
+     cy1midbellsandbot1_amp_3hz$`Shear_Strain_%_Waveform`)
+plot(cy1midbellsandbot1_amp_3hz$Period_Time_s_Waveform, 
+     cy1midbellsandbot1_amp_3hz$Shear_Stress_Pa_Waveform)
+
+plot(cy1midbellsandbot1_amp_1hz$Period_Time_s_Waveform, 
+     cy1midbellsandbot1_amp_1hz$`Shear_Strain_%_Waveform`)
+plot(cy1midbellsandbot1_amp_1hz$Period_Time_s_Waveform, 
+     cy1midbellsandbot1_amp_1hz$Shear_Stress_Pa_Waveform)
+
+plot(cy1midbellsandbot1_amp_0.5hz$Period_Time_s_Waveform, 
+     cy1midbellsandbot1_amp_0.5hz$`Shear_Strain_%_Waveform`)
+plot(cy1midbellsandbot1_amp_0.5hz$Period_Time_s_Waveform, 
+     cy1midbellsandbot1_amp_0.5hz$Shear_Stress_Pa_Waveform)
+
+plot(cy1midbellsandbot1_amp_0.1hz$Period_Time_s_Waveform, 
+     cy1midbellsandbot1_amp_0.1hz$`Shear_Strain_%_Waveform`)
+plot(cy1midbellsandbot1_amp_0.1hz$Period_Time_s_Waveform, 
+     cy1midbellsandbot1_amp_0.1hz$Shear_Stress_Pa_Waveform)
+#
+#
+par(mfrow=c(5,2))
+plot(cy2midbellsandbot1_amp_5hz$Period_Time_s_Waveform, 
+     cy2midbellsandbot1_amp_5hz$`Shear_Strain_%_Waveform`)
+plot(cy2midbellsandbot1_amp_5hz$Period_Time_s_Waveform, 
+     cy2midbellsandbot1_amp_5hz$Shear_Stress_Pa_Waveform)
+
+plot(cy2midbellsandbot1_amp_3hz$Period_Time_s_Waveform, 
+     cy2midbellsandbot1_amp_3hz$`Shear_Strain_%_Waveform`)
+plot(cy2midbellsandbot1_amp_3hz$Period_Time_s_Waveform, 
+     cy2midbellsandbot1_amp_3hz$Shear_Stress_Pa_Waveform)
+
+plot(cy2midbellsandbot1_amp_1hz$Period_Time_s_Waveform, 
+     cy2midbellsandbot1_amp_1hz$`Shear_Strain_%_Waveform`)
+plot(cy2midbellsandbot1_amp_1hz$Period_Time_s_Waveform, 
+     cy2midbellsandbot1_amp_1hz$Shear_Stress_Pa_Waveform)
+
+plot(cy2midbellsandbot1_amp_0.5hz$Period_Time_s_Waveform, 
+     cy2midbellsandbot1_amp_0.5hz$`Shear_Strain_%_Waveform`)
+plot(cy2midbellsandbot1_amp_0.5hz$Period_Time_s_Waveform, 
+     cy2midbellsandbot1_amp_0.5hz$Shear_Stress_Pa_Waveform)
+
+plot(cy2midbellsandbot1_amp_0.1hz$Period_Time_s_Waveform, 
+     cy2midbellsandbot1_amp_0.1hz$`Shear_Strain_%_Waveform`)
+plot(cy2midbellsandbot1_amp_0.1hz$Period_Time_s_Waveform, 
+     cy2midbellsandbot1_amp_0.1hz$Shear_Stress_Pa_Waveform)
+#
+par(mfrow=c(5,2))
+plot(cy1outerbell_amp_5hz$Period_Time_s_Waveform, 
+     cy1outerbell_amp_5hz$`Shear_Strain_%_Waveform`)
+plot(cy1outerbell_amp_5hz$Period_Time_s_Waveform, 
+     cy1outerbell_amp_5hz$Shear_Stress_Pa_Waveform)
+
+plot(cy1outerbell_amp_3hz$Period_Time_s_Waveform, 
+     cy1outerbell_amp_3hz$`Shear_Strain_%_Waveform`)
+plot(cy1outerbell_amp_3hz$Period_Time_s_Waveform, 
+     cy1outerbell_amp_3hz$Shear_Stress_Pa_Waveform)
+
+plot(cy1outerbell_amp_1hz$Period_Time_s_Waveform, 
+     cy1outerbell_amp_1hz$`Shear_Strain_%_Waveform`)
+plot(cy1outerbell_amp_1hz$Period_Time_s_Waveform, 
+     cy1outerbell_amp_1hz$Shear_Stress_Pa_Waveform)
+
+plot(cy1outerbell_amp_0.5hz$Period_Time_s_Waveform, 
+     cy1outerbell_amp_0.5hz$`Shear_Strain_%_Waveform`)
+plot(cy1outerbell_amp_0.5hz$Period_Time_s_Waveform, 
+     cy1outerbell_amp_0.5hz$Shear_Stress_Pa_Waveform)
+
+plot(cy1outerbell_amp_0.1hz$Period_Time_s_Waveform, 
+     cy1outerbell_amp_0.1hz$`Shear_Strain_%_Waveform`)
+plot(cy1outerbell_amp_0.1hz$Period_Time_s_Waveform, 
+     cy1outerbell_amp_0.1hz$Shear_Stress_Pa_Waveform)
+#
+par(mfrow=c(5,2))
+plot(cy2outerbell_amp_5hz$Period_Time_s_Waveform, 
+     cy2outerbell_amp_5hz$`Shear_Strain_%_Waveform`)
+plot(cy2outerbell_amp_5hz$Period_Time_s_Waveform, 
+     cy2outerbell_amp_5hz$Shear_Stress_Pa_Waveform)
+
+plot(cy2outerbell_amp_3hz$Period_Time_s_Waveform, 
+     cy2outerbell_amp_3hz$`Shear_Strain_%_Waveform`)
+plot(cy2outerbell_amp_3hz$Period_Time_s_Waveform, 
+     cy2outerbell_amp_3hz$Shear_Stress_Pa_Waveform)
+
+plot(cy2outerbell_amp_1hz$Period_Time_s_Waveform, 
+     cy2outerbell_amp_1hz$`Shear_Strain_%_Waveform`)
+plot(cy2outerbell_amp_1hz$Period_Time_s_Waveform, 
+     cy2outerbell_amp_1hz$Shear_Stress_Pa_Waveform)
+
+plot(cy2outerbell_amp_0.5hz$Period_Time_s_Waveform, 
+     cy2outerbell_amp_0.5hz$`Shear_Strain_%_Waveform`)
+plot(cy2outerbell_amp_0.5hz$Period_Time_s_Waveform, 
+     cy2outerbell_amp_0.5hz$Shear_Stress_Pa_Waveform)
+
+plot(cy2outerbell_amp_0.1hz$Period_Time_s_Waveform, 
+     cy2outerbell_amp_0.1hz$`Shear_Strain_%_Waveform`)
+plot(cy2outerbell_amp_0.1hz$Period_Time_s_Waveform, 
+     cy2outerbell_amp_0.1hz$Shear_Stress_Pa_Waveform)
+#
+#
+par(mfrow=c(5,2))
+plot(cy1middle_amp_5hz$Period_Time_s_Waveform, 
+     cy1middle_amp_5hz$`Shear_Strain_%_Waveform`)
+plot(cy1middle_amp_5hz$Period_Time_s_Waveform, 
+     cy1middle_amp_5hz$Shear_Stress_Pa_Waveform)
+
+plot(cy1middle_amp_3hz$Period_Time_s_Waveform, 
+     cy1middle_amp_3hz$`Shear_Strain_%_Waveform`)
+plot(cy1middle_amp_3hz$Period_Time_s_Waveform, 
+     cy1middle_amp_3hz$Shear_Stress_Pa_Waveform)
+
+plot(cy1middle_amp_1hz$Period_Time_s_Waveform, 
+     cy1middle_amp_1hz$`Shear_Strain_%_Waveform`)
+plot(cy1middle_amp_1hz$Period_Time_s_Waveform, 
+     cy1middle_amp_1hz$Shear_Stress_Pa_Waveform)
+
+plot(cy1middle_amp_0.5hz$Period_Time_s_Waveform, 
+     cy1middle_amp_0.5hz$`Shear_Strain_%_Waveform`)
+plot(cy1middle_amp_0.5hz$Period_Time_s_Waveform, 
+     cy1middle_amp_0.5hz$Shear_Stress_Pa_Waveform)
+
+plot(cy1middle_amp_0.1hz$Period_Time_s_Waveform, 
+     cy1middle_amp_0.1hz$`Shear_Strain_%_Waveform`)
+plot(cy1middle_amp_0.1hz$Period_Time_s_Waveform, 
+     cy1middle_amp_0.1hz$Shear_Stress_Pa_Waveform)
+#
+#
+par(mfrow=c(5,2))
+plot(cy2middle_amp_5hz$Period_Time_s_Waveform, 
+     cy2middle_amp_5hz$`Shear_Strain_%_Waveform`)
+plot(cy2middle_amp_5hz$Period_Time_s_Waveform, 
+     cy2middle_amp_5hz$Shear_Stress_Pa_Waveform)
+
+plot(cy2middle_amp_3hz$Period_Time_s_Waveform, 
+     cy2middle_amp_3hz$`Shear_Strain_%_Waveform`)
+plot(cy2middle_amp_3hz$Period_Time_s_Waveform, 
+     cy2middle_amp_3hz$Shear_Stress_Pa_Waveform)
+
+plot(cy2middle_amp_1hz$Period_Time_s_Waveform, 
+     cy2middle_amp_1hz$`Shear_Strain_%_Waveform`)
+plot(cy2middle_amp_1hz$Period_Time_s_Waveform, 
+     cy2middle_amp_1hz$Shear_Stress_Pa_Waveform)
+
+plot(cy2middle_amp_0.5hz$Period_Time_s_Waveform, 
+     cy2middle_amp_0.5hz$`Shear_Strain_%_Waveform`)
+plot(cy2middle_amp_0.5hz$Period_Time_s_Waveform, 
+     cy2middle_amp_0.5hz$Shear_Stress_Pa_Waveform)
+
+plot(cy2middle_amp_0.1hz$Period_Time_s_Waveform, 
+     cy2middle_amp_0.1hz$`Shear_Strain_%_Waveform`)
+plot(cy2middle_amp_0.1hz$Period_Time_s_Waveform, 
+     cy2middle_amp_0.1hz$Shear_Stress_Pa_Waveform)
+
 #######################
 
 # split strains
